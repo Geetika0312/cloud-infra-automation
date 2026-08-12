@@ -10,8 +10,8 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY package.json ./
 COPY src ./src
 
-RUN addgroup -S app && adduser -S app -G app
-USER app
+RUN addgroup -g 1001 -S app && adduser -u 1001 -S app -G app
+USER 1001
 
 EXPOSE 3000
 CMD ["node", "src/index.js"]

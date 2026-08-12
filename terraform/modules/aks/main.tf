@@ -6,6 +6,11 @@ resource "azurerm_kubernetes_cluster" "this" {
   kubernetes_version  = var.kubernetes_version
   sku_tier            = var.sku_tier
 
+  # Enforced by a tenant-level Azure Policy in this subscription (not set
+  # by us) - declared explicitly so Terraform doesn't fight the policy by
+  # trying to disable it on every apply.
+  azure_policy_enabled = true
+
   default_node_pool {
     name            = "system"
     node_count      = var.node_count

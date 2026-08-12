@@ -23,6 +23,7 @@ spec:
       containers:
         - name: api
           image: acrcloudinfradev290062.azurecr.io/cloud-infra-demo-api:v1
+          imagePullPolicy: Always
           ports:
             - containerPort: 3000
           envFrom:
